@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     )
 
     if @user
-      login!(user)
+      login!(@user)
       redirect_to user_url(@user)
     else
       @user = User.new

@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  before_action :require_logged_in, except: [:new, :create]
+
+  # def require_logged_in
+  #   redirect_to cats_url if logged_in?
+  # end
+
+
   def new
     @user = User.new
     render :new
@@ -16,6 +23,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+    render :show
+  end
 
   private
   def user_params
